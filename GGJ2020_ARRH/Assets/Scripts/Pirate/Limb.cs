@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Limb
 {
+    public Sprite sprite;
     public float maxHP;
     public float currentHP;
     public float attack;
@@ -11,6 +12,7 @@ public class Limb
 
     public void Initialize(ScriptableLimb data)
     {
+        sprite = data.sprite;
         maxHP = data.maxHP;
         currentHP = data.maxHP;
         attack = data.attack;

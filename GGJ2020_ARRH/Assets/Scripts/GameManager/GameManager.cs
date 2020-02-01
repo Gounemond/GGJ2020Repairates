@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         {
             case GameStates.START:
                 currentState = GameStates.TRANSITION;
+                Debug.Log("Entering: TRANSITION");
                 break;
             case GameStates.TRANSITION:
                 StartCoroutine(Sleep(10));
@@ -53,27 +54,32 @@ public class GameManager : MonoBehaviour
 
                 // every 4 stages there is a boss
                 if (stage % 4 == 0)
-                    ;
+                {
+                    // TODO mettere un boss
+                    InitiateEnemies(10, defaultPirate);
+                    currentState = GameStates.BOSS;
+                    Debug.Log("Entering: BOSS");
+                }
                 else
+                {
                     // TODO aggiungere scalabilità nelle statistiche
                     InitiateEnemies(10, defaultPirate);
-
-
-
-
-
-
-
-
-
-
-
+                    currentState = GameStates.BATTLE;
+                    Debug.Log("Entering: BATTLE");
+                }
                 break;
             case GameStates.BATTLE:
-
-                break;
             case GameStates.BOSS:
-
+                if (IsCrewDead())
+                {
+                    currentState = GameStates.GAMEOVER;
+                    Debug.Log("Entering: GAMEOVER");
+                }
+                if (IsEnemiesDead())
+                {
+                    currentState = GameStates.TRANSITION;
+                    Debug.Log("Entering: TRANSITION");
+                }
                 break;
             case GameStates.GAMEOVER:
 

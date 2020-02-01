@@ -6,9 +6,13 @@ public class Pirate : MonoBehaviour
 {
     [SerializeField]
     private ScriptableLimb defaultHead;
+    [SerializeField]
     private ScriptableLimb defaultLeftArm;
+    [SerializeField]
     private ScriptableLimb defaultRightArm;
+    [SerializeField]
     private ScriptableLimb defaultLeftLeg;
+    [SerializeField]
     private ScriptableLimb defaultRightLeg;
 
     private List<Limb> limbs;
