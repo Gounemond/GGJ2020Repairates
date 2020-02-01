@@ -5,18 +5,24 @@ using UnityEngine;
 public class MovablePirate : MonoBehaviour
 {
     public LayerMask draggableLayer;
+    public Transform draggingLayer;
+
+    //[HideInInspector]
+    public Transform startingPos;
+    //[HideInInspector]
+    public Transform goingPos;
+    //[HideInInspector]
+    public Transform oldPos;
+
+    //[HideInInspector]
+    public Transform otherPirate;
+    //[HideInInspector]
+    public bool isOccupied = false;
+    //[HideInInspector]
+    public bool hasHit = false;
 
     private Vector3 mOffset;
     private float mZCoord;
-
-    public Transform draggingLayer;
-
-    [SerializeField] private Transform startingPos;
-    [SerializeField] private Transform oldPos;
-
-    [SerializeField] private Transform otherPirate;
-    [SerializeField] private bool isOccupied = false;
-    [SerializeField] private bool hasHit = false;
 
     void OnMouseDown()
     {
@@ -60,26 +66,31 @@ public class MovablePirate : MonoBehaviour
 
                     oldPos = startingPos;
 
-                    startingPos = hit.transform;
+                    goingPos = hit.transform;
 
                     hasHit = true;
                 }
                 else
                 {
                     isOccupied = false;
-                    startingPos = hit.transform;
+                    goingPos = hit.transform;
                     hasHit = true;
                 }
             }
-            
-            
         }
         else
         {
             isOccupied = false;
             hasHit = false;
+
+            oldPos = null;
+            otherPirate = null;
+
+            goingPos = startingPos;
+
             Debug.DrawRay(transform.position, Vector3.forward * 100, Color.white);
             Debug.Log("Did not Hit");
+
         }
     }
 
@@ -88,20 +99,37 @@ public class MovablePirate : MonoBehaviour
         
         if(!isOccupied)
         {
-            transform.SetParent(startingPos);
-            transform.position = new Vector3(startingPos.position.x, startingPos.position.y, transform.position.z);
+            transform.SetParent(goingPos);
+            transform.position = new Vector3(goingPos.position.x, goingPos.position.y, transform.position.z + 0.1f);
             isOccupied = false;
             hasHit = false;
+
+            startingPos = null;
+            goingPos = null;
+            oldPos = null;
+            otherPirate = null;
         }
         else
         {
             otherPirate.transform.SetParent(oldPos);
-            otherPirate.transform.position = oldPos.position;
+            otherPirate.transform.position = new Vector3(oldPos.position.x, oldPos.position.y, transform.position.z + 0.1f);
 
-            transform.SetParent(startingPos);
-            transform.position = new Vector3(startingPos.position.x, startingPos.position.y, transform.position.z);
+            transform.SetParent(goingPos);
+            transform.position = new Vector3(goingPos.position.x, goingPos.position.y, transform.position.z + 0.1f);
             isOccupied = false;
             hasHit = false;
+
+            MovablePirate pirate = otherPirate.transform.GetComponent<MovablePirate>();
+
+            pirate.startingPos = null;
+            pirate.goingPos = null;
+            pirate.oldPos = null;
+            pirate.otherPirate = null;
+
+            startingPos = null;
+            goingPos = null;
+            oldPos = null;
+            otherPirate = null;
         }
    
     }
