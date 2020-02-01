@@ -16,17 +16,23 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    private GameObject ship;
     [SerializeField]
+    private GameObject shipBase;
+    //[SerializeField]
     private int crewNumber = 6;
+    //[SerializeField]
+    //private GameObject defaultPirate;
+
+    private List<GameObject> crew;
+
     [SerializeField]
-    private GameObject defaultPirate;
+    private List<GameObject> shipsBase;
+    [SerializeField]
+    private List<GameObject> bossesBase;
 
-    public List<GameObject> crew;
-
-    public List<GameObject> shipsBase;
-    public List<GameObject> bossesBase;
-    public List<GameObject> ships;
-    public List<GameObject> bosses;
+    private List<GameObject> ships;
+    private List<GameObject> bosses;
 
     public GameObject enemy;
 
@@ -34,9 +40,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        ship = Instantiate(shipBase);
         crew = new List<GameObject>();
+        /*for (int i = 0; i < crewNumber; i++)
+            crew.Add(Instantiate(defaultPirate));*/
         for (int i = 0; i < crewNumber; i++)
-            crew.Add(Instantiate(defaultPirate));
+            crew.Add(ship.transform.GetChild(0).GetChild(i).GetChild(0).gameObject);
 
         ships = new List<GameObject>();
         foreach (GameObject go in shipsBase)
@@ -45,8 +54,6 @@ public class GameManager : MonoBehaviour
         bosses = new List<GameObject>();
         foreach (GameObject go in bossesBase)
             bosses.Add(Instantiate(go));
-
-        Debug.Log("ships "+ships.Count);
 
         currentState = GameStates.START;
 

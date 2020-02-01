@@ -99,7 +99,7 @@ MonoBehaviour:
   defaultRightArm: {fileID: 11400000, guid: cfaa41de711cbf34583d6949e373288e, type: 2}
   defaultLeftLeg: {fileID: 11400000, guid: 6b172efb5c740cd4297883cab69f715c, type: 2}
   defaultRightLeg: {fileID: 11400000, guid: 2f08b8408573b994994a9b603a9f9b71, type: 2}
-  attackPerSecond: 1
+  attackPerSecond: 4
 --- !u!1001 &6076105200044116191
 PrefabInstance:
   m_ObjectHideFlags: 0
