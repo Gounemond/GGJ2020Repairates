@@ -100,7 +100,7 @@ public class MovablePirate : MonoBehaviour
         if(!isOccupied)
         {
             transform.SetParent(goingPos);
-            transform.position = new Vector3(goingPos.position.x, goingPos.position.y, transform.position.z + 0.1f);
+            transform.position = new Vector3(goingPos.position.x, goingPos.position.y, goingPos.position.z - 0.1f);
             isOccupied = false;
             hasHit = false;
 
@@ -112,10 +112,10 @@ public class MovablePirate : MonoBehaviour
         else
         {
             otherPirate.transform.SetParent(oldPos);
-            otherPirate.transform.position = new Vector3(oldPos.position.x, oldPos.position.y, transform.position.z + 0.1f);
+            otherPirate.transform.position = new Vector3(oldPos.position.x, oldPos.position.y, goingPos.position.z - 0.1f);
 
             transform.SetParent(goingPos);
-            transform.position = new Vector3(goingPos.position.x, goingPos.position.y, transform.position.z + 0.1f);
+            transform.position = new Vector3(goingPos.position.x, goingPos.position.y, goingPos.position.z - 0.1f);
             isOccupied = false;
             hasHit = false;
 

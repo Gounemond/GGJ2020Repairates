@@ -43,3 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Mare
+    uniqueID: 1023372601
+    locked: 0
+  - name: Cattivi
+    uniqueID: 3374547561
+    locked: 0
+  - name: Player
+    uniqueID: 964749537
+    locked: 0
