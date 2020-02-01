@@ -17,7 +17,8 @@ public class Pirate : MonoBehaviour
 
     private List<Limb> limbs;
 
-    private bool dead;
+    // if the pirate is not on the bridge he cannot attack
+    private bool canAttack;
 
     void Start()
     {
@@ -27,17 +28,34 @@ public class Pirate : MonoBehaviour
             limbs.Add(new Limb());
 
         limbs[LimbsIndexes.HEAD].Initialize(defaultHead);
-        limbs[LimbsIndexes.LEFTARM].Initialize(defaultHead);
-        limbs[LimbsIndexes.RIGHTARM].Initialize(defaultHead);
-        limbs[LimbsIndexes.LEFTLEG].Initialize(defaultHead);
-        limbs[LimbsIndexes.RIGHTARM].Initialize(defaultHead);
+        limbs[LimbsIndexes.LEFTARM].Initialize(defaultLeftArm);
+        limbs[LimbsIndexes.RIGHTARM].Initialize(defaultRightArm);
+        limbs[LimbsIndexes.LEFTLEG].Initialize(defaultLeftLeg);
+        limbs[LimbsIndexes.RIGHTLEG].Initialize(defaultRightArm);
 
-        dead = false;
+        canAttack = false;
+
+        ticks = Time.time;
     }
 
-    void Update()
+    public float attackPerSecond = 1;
+    private float ticks;
+    private void Update()
     {
-        
+        if (Time.time - ticks >= attackPerSecond)
+        {
+            ticks = Time.time;
+            Attack();
+        }
+    }
+
+    public void CanAttack()
+    {
+        canAttack = true;
+    }
+    public void CantAttack()
+    {
+        canAttack = false;
     }
 
     public void TakeDamage(float amount)
@@ -48,9 +66,27 @@ public class Pirate : MonoBehaviour
 
         // check if the pirate died
         if (GetCurrentHP() <= 0)
-            dead = true;
+        {
+            CantAttack();
+            Debug.Log("A pirate died!");
+        }
+    }
+    private void Attack()
+    {
+        if (canAttack)
+        {
+            Debug.Log("A pirate is attacking with " + GetTotalAttack());
+            GameManager.Instance.AttackEnemy(GetTotalAttack());
+        }
     }
 
+    public float GetTotalAttack()
+    {
+        float total = 0;
+        foreach (Limb limb in limbs)
+            total += limb.attack;
+        return total;
+    }
     public float GetTotalHP()
     {
         float total = 0;
@@ -68,6 +104,11 @@ public class Pirate : MonoBehaviour
 
     public bool IsDead()
     {
-        return dead;
+        return GetCurrentHP() <= 0;
+    }
+
+    public List<Limb> GetLimbs()
+    {
+        return limbs;
     }
 }

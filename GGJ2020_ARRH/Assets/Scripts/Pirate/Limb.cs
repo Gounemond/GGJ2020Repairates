@@ -8,6 +8,7 @@ public class Limb
     public float maxHP;
     public float currentHP;
     public float attack;
+    public float attackPerSecond;
     public bool melee;
 
     public void Initialize(ScriptableLimb data)
@@ -16,6 +17,7 @@ public class Limb
         maxHP = data.maxHP;
         currentHP = data.maxHP;
         attack = data.attack;
+        attackPerSecond = data.attackPerSecond;
         melee = data.melee;
     }
 }
