@@ -9,5 +9,6 @@ public class GameStates
         TRANSITION = 1,
         BATTLE = 2,
         BOSS = 3,
-        GAMEOVER = 4;
+        GAMEOVER = 4,
+        WAITING_FOR_EVENT = 5;
 }

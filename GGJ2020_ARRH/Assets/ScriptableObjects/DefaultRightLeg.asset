@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DefaultRightLeg
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  maxHP: 0
-  attack: 0
+  maxHP: 1
+  attack: 1
+  attackPerSecond: 1
   melee: 0

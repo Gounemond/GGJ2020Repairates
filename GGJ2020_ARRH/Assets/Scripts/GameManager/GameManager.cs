@@ -4,13 +4,31 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region singleton
+    public static GameManager Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+    #endregion
+
     [SerializeField]
-    private int crewNumber = 10;
+    private int crewNumber = 6;
     [SerializeField]
     private GameObject defaultPirate;
 
-    List<GameObject> crew;
-    List<GameObject> enemies;
+    public List<GameObject> crew;
+
+    public List<GameObject> shipsBase;
+    public List<GameObject> bossesBase;
+    public List<GameObject> ships;
+    public List<GameObject> bosses;
+
+    public GameObject enemy;
 
     public int stage;
 
@@ -20,7 +38,15 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < crewNumber; i++)
             crew.Add(Instantiate(defaultPirate));
 
-        InitiateEnemies(10, defaultPirate);
+        ships = new List<GameObject>();
+        foreach (GameObject go in shipsBase)
+            ships.Add(Instantiate(go));
+
+        bosses = new List<GameObject>();
+        foreach (GameObject go in bossesBase)
+            bosses.Add(Instantiate(go));
+
+        Debug.Log("ships "+ships.Count);
 
         currentState = GameStates.START;
 
@@ -48,25 +74,10 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Entering: TRANSITION");
                 break;
             case GameStates.TRANSITION:
-                StartCoroutine(Sleep(10));
-
-                stage++;
-
-                // every 4 stages there is a boss
-                if (stage % 4 == 0)
-                {
-                    // TODO mettere un boss
-                    InitiateEnemies(10, defaultPirate);
-                    currentState = GameStates.BOSS;
-                    Debug.Log("Entering: BOSS");
-                }
-                else
-                {
-                    // TODO aggiungere scalabilità nelle statistiche
-                    InitiateEnemies(10, defaultPirate);
-                    currentState = GameStates.BATTLE;
-                    Debug.Log("Entering: BATTLE");
-                }
+                StartCoroutine(SleepCoroutine(4));
+                currentState = GameStates.WAITING_FOR_EVENT;
+                break;
+            case GameStates.WAITING_FOR_EVENT:
                 break;
             case GameStates.BATTLE:
             case GameStates.BOSS:
@@ -75,8 +86,9 @@ public class GameManager : MonoBehaviour
                     currentState = GameStates.GAMEOVER;
                     Debug.Log("Entering: GAMEOVER");
                 }
-                if (IsEnemiesDead())
+                if (enemy.GetComponent<Enemy>().IsDead())
                 {
+                    enemy.SetActive(false);
                     currentState = GameStates.TRANSITION;
                     Debug.Log("Entering: TRANSITION");
                 }
@@ -86,10 +98,41 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
-    private IEnumerator Sleep(float seconds)
+    private IEnumerator SleepCoroutine(float seconds)
     {
-        yield return new WaitForSecondsRealtime(seconds);
+        yield return new WaitForSeconds(seconds);
+        Debug.Log("after wait for seconds");
+        stage++;
+
+        // every 4 stages there is a boss
+        if (stage % 4 == 0)
+        {
+            int index = Random.Range(0, bosses.Count - 1);
+
+            Debug.Log("nemico pescato" + index);
+            enemy = bosses[index];
+            enemy.GetComponent<Enemy>().Initialize(stage);
+            enemy.SetActive(true);
+
+            currentState = GameStates.BOSS;
+            Debug.Log("Entering: BOSS");
+        }
+        else
+        {
+            int index = Random.Range(0, ships.Count - 1);
+            Debug.Log("nemico pescato" + index);
+            enemy = ships[index];
+            enemy.GetComponent<Enemy>().Initialize(stage);
+            enemy.SetActive(true);
+
+            currentState = GameStates.BATTLE;
+            Debug.Log("Entering: BATTLE "+currentState);
+        }
+        foreach (GameObject pirate in crew)
+            pirate.GetComponent<Pirate>().CanAttack();
+
+        if (enemy == null)
+            Debug.Log("Can't create enemy :(");
     }
     #endregion
 
@@ -101,22 +144,21 @@ public class GameManager : MonoBehaviour
                 return false;
         return true;
     }
-    #endregion
-
-    #region enemies
-    public bool IsEnemiesDead()
+    public void AttackCrew(float amount)
     {
-        foreach (GameObject go in enemies)
-            if (!go.GetComponent<Pirate>().IsDead())
-                return false;
-        return true;
+        int index = Random.Range(0, crew.Count - 1);
+        crew[index].GetComponent<Pirate>().TakeDamage(amount);
+        if (crew[index].GetComponent<Pirate>().IsDead())
+        {
+            crew[index].SetActive(false);
+            crew.RemoveAt(index);
+        }
     }
-
-    void InitiateEnemies(int crewNumber, GameObject enemyPirate)
+    #endregion
+    #region enemies
+    public void AttackEnemy(float amount)
     {
-        enemies = new List<GameObject>();
-        for (int i = 0; i < crewNumber; i++)
-            enemies.Add(Instantiate(enemyPirate));
+        enemy.GetComponent<Enemy>().TakeDamage(amount);
     }
     #endregion
 }

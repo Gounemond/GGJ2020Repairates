@@ -8,5 +8,6 @@ public class ScriptableLimb : ScriptableObject
     public Sprite sprite;
     public float maxHP;
     public float attack;
+    public float attackPerSecond;
     public bool melee; // false = weapon is ranged
 }

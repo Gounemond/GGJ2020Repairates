@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2972957426777484454
+--- !u!1 &4755414618703269582
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2972957426777484452}
-  - component: {fileID: 2972957426777484455}
+  - component: {fileID: 8291214537171126116}
+  - component: {fileID: 8991401036113244677}
   m_Layer: 0
-  m_Name: Pirate
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2972957426777484452
+--- !u!4 &8291214537171126116
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2972957426777484454}
+  m_GameObject: {fileID: 4755414618703269582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,21 +31,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2972957426777484455
+--- !u!114 &8991401036113244677
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2972957426777484454}
+  m_GameObject: {fileID: 4755414618703269582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f60069d20341f4da86154c486d174d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10912a291f066644281d107b05e9916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultHead: {fileID: 11400000, guid: 4f65468c9f2213a4db93d52447f05840, type: 2}
-  defaultLeftArm: {fileID: 11400000, guid: 0e7bc5bf86ffae64bbb2ba7be2aef28c, type: 2}
-  defaultRightArm: {fileID: 11400000, guid: cfaa41de711cbf34583d6949e373288e, type: 2}
-  defaultLeftLeg: {fileID: 11400000, guid: 6b172efb5c740cd4297883cab69f715c, type: 2}
-  defaultRightLeg: {fileID: 11400000, guid: 2f08b8408573b994994a9b603a9f9b71, type: 2}
-  attackPerSecond: 4
+  hp: 100
+  attack: 1
+  drops: []
+  attackPerSecond: 1
