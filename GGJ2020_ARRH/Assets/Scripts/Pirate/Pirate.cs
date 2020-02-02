@@ -1,9 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Pirate : MonoBehaviour
 {
+    public Action Ondeath;
+
+    [SerializeField] private PirateAnim pirateAnim;
+
     [SerializeField]
     private ScriptableLimb defaultHead;
     [SerializeField]
@@ -65,13 +70,18 @@ public class Pirate : MonoBehaviour
     public void TakeDamage(float amount)
     {
         // hit a random limb
-        int index = Random.Range(0, 4);
+        int index = UnityEngine.Random.Range(0, 4);
         limbs[index].currentHP -= amount;
+
+        // Play anims and sounds
+        pirateAnim.GetHit();
 
         // check if the pirate died
         if (GetCurrentHP() <= 0)
         {
             CantAttack();
+            pirateAnim.Die();
+            StartCoroutine(DieGracefully());
             Debug.Log("A pirate died!");
         }
     }
@@ -80,6 +90,7 @@ public class Pirate : MonoBehaviour
         if (canAttack)
         {
             Debug.Log("A pirate is attacking with " + GetTotalAttack());
+            pirateAnim.Attack();
             GameManager.Instance.AttackEnemy(GetTotalAttack());
         }
     }
@@ -108,11 +119,17 @@ public class Pirate : MonoBehaviour
 
     public bool IsDead()
     {
-        return GetCurrentHP() <= 0;
+        return (GetCurrentHP() <= 0);
     }
 
     public List<Limb> GetLimbs()
     {
         return limbs;
+    }
+
+    private IEnumerator DieGracefully()
+    {
+        yield return new WaitForSeconds(3);
+        this.gameObject.SetActive(false);
     }
 }
