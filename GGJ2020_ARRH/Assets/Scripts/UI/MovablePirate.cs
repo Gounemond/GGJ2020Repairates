@@ -33,7 +33,6 @@ public class MovablePirate : MonoBehaviour
     private void Start()
     {
         inventoryOpener = FindObjectOfType<OpenCloseInventory>();
-        Debug.Log("Yeah");
     }
 
     void OnMouseDown()
