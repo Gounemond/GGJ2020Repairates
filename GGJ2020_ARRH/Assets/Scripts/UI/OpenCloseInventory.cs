@@ -11,7 +11,7 @@ public class OpenCloseInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        isClosed = true;
     }
 
     // Update is called once per frame
@@ -24,6 +24,7 @@ public class OpenCloseInventory : MonoBehaviour
     public void OpenInventory()
     {
         inventoryAnimator.SetBool("IsOpen", true);
+        Debug.Log("Marcodio?");
         isClosed = false;
     }
 
