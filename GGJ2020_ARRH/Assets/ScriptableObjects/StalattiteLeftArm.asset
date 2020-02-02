@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StalattiteLeftArm
   m_EditorClassIdentifier: 
   elementMat: {fileID: 2100000, guid: f63e979ea893a494cbdfb43656276daa, type: 2}
-  maxHP: 14
-  attack: 0
+  maxHP: 11
+  attack: 6
   attackPerSecond: 1
   melee: 0

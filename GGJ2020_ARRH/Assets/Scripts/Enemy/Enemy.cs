@@ -26,10 +26,10 @@ public class Enemy : MonoBehaviour
         if (stage % 4 == 0)
             enemyMulti = 0.9f;
         else
-            enemyMulti = 0.6f;
+            enemyMulti = 0.7f;
 
         hp = hpBase * stage * enemyMulti;
-        attack = attackBase * stage * enemyMulti;
+        attack = attackBase * stage * 0.7f;
 
         // TODO balance
         multiplier = stage;
@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
                 int dropNumber;
 
                 if (stage % 4 == 0)
-                    dropNumber = Random.Range(3, 5);
+                    dropNumber = Random.Range(4, 5);
                 else
                     dropNumber = Random.Range(2, 4);
                 Debug.Log("droppati " + dropNumber + " oggetti");

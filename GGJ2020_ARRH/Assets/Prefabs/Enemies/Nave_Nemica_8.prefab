@@ -94,13 +94,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBase: 60
-  attackBase: 3
+  attackBase: 1
   attackPerSecondBase: 1
   dropsBase:
   - {fileID: 6758237189065870323, guid: 5f64d64826d26c4409273a3e86a0d1ea, type: 3}
   - {fileID: 6758237189065870323, guid: e61813e7118361c41981ab860a694ea9, type: 3}
   - {fileID: 6758237189065870323, guid: b81f7cff3a6593f45b5a0c4b2165219b, type: 3}
-  - {fileID: 6758237189065870323, guid: 4bcda428702798741852948885a2436e, type: 3}
+  - {fileID: 6758237189065870323, guid: 5f64d64826d26c4409273a3e86a0d1ea, type: 3}
   hp: 105
   attack: 1
   attackPerSecond: 1
