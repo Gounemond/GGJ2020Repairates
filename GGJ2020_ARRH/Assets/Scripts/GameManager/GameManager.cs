@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -77,6 +78,8 @@ public class GameManager : MonoBehaviour
         switch (currentState)
         {
             case GameStates.START:
+                ScoreSingleton.Instance.stage = 1;
+
                 currentState = GameStates.TRANSITION;
                 Debug.Log("Entering: TRANSITION");
                 break;
@@ -101,7 +104,9 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case GameStates.GAMEOVER:
-
+                ScoreSingleton.Instance.stage = stage;
+                Debug.Log("stage: "+ ScoreSingleton.Instance.stage);
+                SceneManager.LoadScene("3_ScoreScreen");
                 break;
         }
     }
