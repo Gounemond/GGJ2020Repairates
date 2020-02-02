@@ -17,14 +17,13 @@ public class UIPirate : MonoBehaviour
     public GameObject rightLeg;
     public GameObject leftLeg;
 
-    [HideInInspector]
     public RawImage image;
 
     void Start()
     {
         Instance = this;
 
-        image = GetComponent<RawImage>();
+        //image = GetComponent<RawImage>();
     }
 
 
