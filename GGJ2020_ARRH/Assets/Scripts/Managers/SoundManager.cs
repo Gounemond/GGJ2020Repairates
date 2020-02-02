@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class HomeManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     public PanelFader panelFader;
 

@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 8350035861079932219}
   - component: {fileID: 4654373246471760959}
   m_Layer: 0
-  m_Name: Kraken_Boss
+  m_Name: Boss_Kraken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,11 +280,21 @@ MonoBehaviour:
   hpBase: 500
   attackBase: 2
   attackPerSecondBase: 1
-  dropsBase: []
+  dropsBase:
+  - {fileID: 6758237189065870323, guid: 0bdfb767c4a09ae49bf5e6fc337e0802, type: 3}
+  - {fileID: 6758237189065870323, guid: 0bdfb767c4a09ae49bf5e6fc337e0802, type: 3}
+  - {fileID: 6758237189065870323, guid: 0bdfb767c4a09ae49bf5e6fc337e0802, type: 3}
+  - {fileID: 6758237189065870323, guid: e61813e7118361c41981ab860a694ea9, type: 3}
+  - {fileID: 6758237189065870323, guid: b81f7cff3a6593f45b5a0c4b2165219b, type: 3}
+  - {fileID: 6758237189065870323, guid: 4bcda428702798741852948885a2436e, type: 3}
+  - {fileID: 6758237189065870323, guid: 4bcda428702798741852948885a2436e, type: 3}
+  - {fileID: 6758237189065870323, guid: b81f7cff3a6593f45b5a0c4b2165219b, type: 3}
+  - {fileID: 6758237189065870323, guid: 5f64d64826d26c4409273a3e86a0d1ea, type: 3}
+  - {fileID: 6758237189065870323, guid: 5f64d64826d26c4409273a3e86a0d1ea, type: 3}
   hp: 500
   attack: 2
   attackPerSecond: 1
-  drops: []
+  multiplier: 0
 --- !u!1 &3555287858100328293
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultLeftLeg
   m_EditorClassIdentifier: 
   elementMat: {fileID: 2100000, guid: 9a8b509d4bae7c6449736c8caf0ea967, type: 2}
-  maxHP: 1
+  maxHP: 3
   attack: 1
   attackPerSecond: 1
   melee: 0

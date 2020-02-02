@@ -17,10 +17,19 @@ public class Enemy : MonoBehaviour
 
     private float ticks;
 
+    private int stage;
+
     public void Initialize(int stage)
     {
-        hp = hpBase * stage;
-        attack = attackBase * stage;
+        this.stage = stage;
+        float enemyMulti;
+        if (stage % 4 == 0)
+            enemyMulti = 1;
+        else
+            enemyMulti = 0.6f;
+
+        hp = hpBase * stage * enemyMulti;
+        attack = attackBase * stage * enemyMulti;
 
         // TODO balance
         multiplier = stage;
@@ -61,8 +70,12 @@ public class Enemy : MonoBehaviour
 
             if (hp <= 0)
             {
-                int dropNumber = Random.Range(1, 3);
+                int dropNumber;
 
+                if (stage % 4 == 0)
+                    dropNumber = Random.Range(3, 5);
+                else
+                    dropNumber = Random.Range(2, 4);
                 Debug.Log("droppati " + dropNumber + " oggetti");
                 for (int i = 0; i < dropNumber; i++)
                 {
