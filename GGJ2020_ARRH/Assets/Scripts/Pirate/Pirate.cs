@@ -75,7 +75,7 @@ public class Pirate : MonoBehaviour
             int index;
             do
             {
-                index = UnityEngine.Random.Range(0, 4);
+                index = UnityEngine.Random.Range(0, 5);
             } while (limbs[index].currentHP <= 0);
 
             // actual do the damage to the limb

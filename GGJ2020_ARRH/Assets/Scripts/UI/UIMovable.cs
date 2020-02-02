@@ -73,7 +73,10 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             }
 
             UIPirate.Instance.pirate.defaultRightArm = transform.GetComponent<Drop>().limb;
-            UIPirate.Instance.pirate.defaultRightArm.elementMat = transform.GetComponent<Drop>().limb.elementMat;
+
+            Limb tempLimb = new Limb();
+            tempLimb.Initialize(transform.GetComponent<Drop>().limb);
+            UIPirate.Instance.pirate.SetLimb(LimbsIndexes.RIGHTARM, tempLimb);
             //cambiare il mat
 
             transform.SetParent(rightArmContentTransform);
@@ -88,7 +91,10 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             }
 
             UIPirate.Instance.pirate.defaultLeftArm = transform.GetComponent<Drop>().limb;
-            UIPirate.Instance.pirate.defaultLeftArm.elementMat = transform.GetComponent<Drop>().limb.elementMat;
+
+            Limb tempLimb = new Limb();
+            tempLimb.Initialize(transform.GetComponent<Drop>().limb);
+            UIPirate.Instance.pirate.SetLimb(LimbsIndexes.LEFTARM, tempLimb);
 
 
             transform.SetParent(leftArmContentTransform);
@@ -103,7 +109,10 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             }
 
             UIPirate.Instance.pirate.defaultRightLeg = transform.GetComponent<Drop>().limb;
-            UIPirate.Instance.pirate.defaultRightLeg.elementMat = transform.GetComponent<Drop>().limb.elementMat;
+
+            Limb tempLimb = new Limb();
+            tempLimb.Initialize(transform.GetComponent<Drop>().limb);
+            UIPirate.Instance.pirate.SetLimb(LimbsIndexes.RIGHTLEG, tempLimb);
 
             transform.SetParent(rightLegContentTransform);
             startingTransformParent = rightLegContentTransform;
@@ -121,7 +130,6 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             Limb tempLimb = new Limb();
             tempLimb.Initialize(transform.GetComponent<Drop>().limb);
             UIPirate.Instance.pirate.SetLimb(LimbsIndexes.LEFTLEG, tempLimb);
-            Debug.Log("Boh in teoria ho cambiato la gamba sinistra");
 
             transform.SetParent(leftLegContentTransform);
             startingTransformParent = leftLegContentTransform;
