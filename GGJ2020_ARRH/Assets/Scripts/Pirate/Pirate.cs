@@ -125,6 +125,20 @@ public class Pirate : MonoBehaviour
         return limbs;
     }
 
+    public Limb GetLimb(int indexOfLimb)
+    {
+        return limbs[indexOfLimb];
+    }
+
+    public void SetLimb(int indexOfLimb, Limb newLimb)
+    {
+        limbs[indexOfLimb].attack = newLimb.attack;
+        limbs[indexOfLimb].currentHP = newLimb.maxHP;
+        limbs[indexOfLimb].maxHP = newLimb.maxHP;
+        limbs[indexOfLimb].elementMat = newLimb.elementMat;
+
+    }
+
     private IEnumerator DieGracefully()
     {
         yield return new WaitForSeconds(3);

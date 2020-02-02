@@ -117,7 +117,9 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             }
 
             UIPirate.Instance.pirate.defaultLeftLeg = transform.GetComponent<Drop>().limb;
-            UIPirate.Instance.pirate.defaultLeftLeg.elementMat = transform.GetComponent<Drop>().limb.elementMat;
+            //UIPirate.Instance.pirate.defaultLeftLeg.elementMat = transform.GetComponent<Drop>().limb.elementMat;
+            UIPirate.Instance.pirate.GetLimb(LimbsIndexes.LEFTLEG).elementMat = transform.GetComponent<Drop>().limb.elementMat;
+            Debug.Log("Boh in teoria ho cambiato la gamba sinistra");
 
             transform.SetParent(leftLegContentTransform);
             startingTransformParent = leftLegContentTransform;
