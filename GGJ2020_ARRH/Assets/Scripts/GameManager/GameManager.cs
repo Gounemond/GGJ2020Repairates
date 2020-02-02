@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameStates.TRANSITION:
                 StartCoroutine(SleepCoroutine(4));
+                SoundManager.Instance.WaitingSoundtrack();
                 currentState = GameStates.WAITING_FOR_EVENT;
                 break;
             case GameStates.WAITING_FOR_EVENT:
@@ -121,6 +122,7 @@ public class GameManager : MonoBehaviour
             enemy.GetComponent<Enemy>().Initialize(stage);
             enemy.SetActive(true);
 
+            SoundManager.Instance.BossFightSoundTrack();
             currentState = GameStates.BOSS;
             Debug.Log("Entering: BOSS");
         }
@@ -132,6 +134,7 @@ public class GameManager : MonoBehaviour
             enemy.GetComponent<Enemy>().Initialize(stage);
             enemy.SetActive(true);
 
+            SoundManager.Instance.FightSoundTrack();
             currentState = GameStates.BATTLE;
             Debug.Log("Entering: BATTLE "+currentState);
         }
