@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10912a291f066644281d107b05e9916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBase: 500
+  hpBase: 45
   attackBase: 2
   attackPerSecondBase: 1
   dropsBase:

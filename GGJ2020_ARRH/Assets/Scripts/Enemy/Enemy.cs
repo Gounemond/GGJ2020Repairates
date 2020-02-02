@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
         this.stage = stage;
         float enemyMulti;
         if (stage % 4 == 0)
-            enemyMulti = 1;
+            enemyMulti = 0.9f;
         else
             enemyMulti = 0.6f;
 
