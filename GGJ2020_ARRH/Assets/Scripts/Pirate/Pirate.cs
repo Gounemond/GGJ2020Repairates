@@ -69,46 +69,52 @@ public class Pirate : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        // hit a random limb with some hps left
-        int index;
-        do
+        if(!IsDead())
         {
-            index = UnityEngine.Random.Range(1, 4);
-        } while (limbs[index].currentHP <= 0);
-
-        // actual do the damage to the limb
-        limbs[index].currentHP -= amount;
-
-        // remove the limb if it is finally destroyed
-        if (limbs[index].currentHP <= 0)
-        {
-            switch (index)
+            // hit a random limb with some hps left
+            int index;
+            do
             {
-                case LimbsIndexes.LEFTARM:
-                    transform.GetChild(0).GetChild(2).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
-                    break;
-                case LimbsIndexes.RIGHTARM:
-                    transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
-                    break;
-                case LimbsIndexes.LEFTLEG:
-                    transform.GetChild(0).GetChild(5).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
-                    break;
-                case LimbsIndexes.RIGHTLEG:
-                    transform.GetChild(0).GetChild(4).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
-                    break;
+                index = UnityEngine.Random.Range(0, 4);
+            } while (limbs[index].currentHP <= 0);
+
+            // actual do the damage to the limb
+            limbs[index].currentHP -= amount;
+
+            // remove the limb if it is finally destroyed
+            if (limbs[index].currentHP <= 0)
+            {
+                switch (index)
+                {
+                    case LimbsIndexes.LEFTARM:
+                        transform.GetChild(0).GetChild(2).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
+                        break;
+                    case LimbsIndexes.RIGHTARM:
+                        transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
+                        break;
+                    case LimbsIndexes.LEFTLEG:
+                        transform.GetChild(0).GetChild(5).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
+                        break;
+                    case LimbsIndexes.RIGHTLEG:
+                        transform.GetChild(0).GetChild(4).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
+                        break;
+                    default:
+                        Debug.Log("Ziomadonna");
+                        break;
+                }
             }
-        }
 
-            // Play anims and sounds
-            pirateAnim.GetHit();
+                // Play anims and sounds
+                pirateAnim.GetHit();
 
-        // check if the pirate died
-        if (GetCurrentHP() <= 0)
-        {
-            CantAttack();
-            pirateAnim.Die();
-            StartCoroutine(DieGracefully());
-            Debug.Log("A pirate died!");
+            // check if the pirate died
+            if (GetCurrentHP() <= 0)
+            {
+                CantAttack();
+                pirateAnim.Die();
+                StartCoroutine(DieGracefully());
+                Debug.Log("A pirate died!");
+            }
         }
     }
     private void Attack()
@@ -179,6 +185,9 @@ public class Pirate : MonoBehaviour
                 break;
             case LimbsIndexes.RIGHTLEG:
                 transform.GetChild(0).GetChild(4).GetComponent<SkinnedMeshRenderer>().material = newLimb.elementMat;
+                break;
+            default:
+                Debug.Log("Ziomadonna");
                 break;
         }
     }

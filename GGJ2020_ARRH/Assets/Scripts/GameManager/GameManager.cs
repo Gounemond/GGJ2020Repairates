@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
         crew[index].GetComponent<Pirate>().TakeDamage(amount);
         if (crew[index].GetComponent<Pirate>().IsDead())
         {
-            crew[index].SetActive(false);
+            //crew[index].SetActive(false);
             crew.RemoveAt(index);
         }
     }
