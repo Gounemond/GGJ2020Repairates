@@ -40,8 +40,6 @@ public class MovablePirate : MonoBehaviour
         startingPos = transform.parent.transform;
 
         transform.SetParent(draggingLayer);
-
-        
     }
 
 
@@ -61,8 +59,6 @@ public class MovablePirate : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.forward, out hit, 100, draggableLayer))
         {
-            
-
             Debug.DrawRay(transform.position, Vector3.forward * hit.distance, Color.yellow);
             Debug.Log("Did Hit");
 
