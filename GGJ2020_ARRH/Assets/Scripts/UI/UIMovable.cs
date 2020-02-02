@@ -13,16 +13,29 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     public Transform outernCanvasTransform; //so when we parent to this while dragging the item stays above all the UI
 
     public RectTransform backpackContentTransform; // the parent to assign if the item has to snap to the backpack
-    public RectTransform inventoryContentTransform; // the parent to assign if the item has to snap to the inventory
+    public RectTransform rightArmContentTransform; // the parent to assign if the item has to snap to the right arm
+    public RectTransform leftArmContentTransform; // the parent to assign if the item has to snap to the right arm
+    public RectTransform rightLegContentTransform; // the parent to assign if the item has to snap to the right arm
+    public RectTransform leftLegContentTransform; // the parent to assign if the item has to snap to the right arm
 
-    public RectTransform backpackTransform; //the transform to check if the item is inside the backpack
-    public RectTransform inventoryTransform; //the transform to check if the item is inside the inventory
+
+    //public RectTransform backpackTransform; //the transform to check if the item is inside the backpack
+    //public RectTransform rightArmTransform; //the transform to check if the item is inside the inventory
+    //public RectTransform leftArmTransform; //the transform to check if the item is inside the inventory
+    //public RectTransform rightLegTransform; //the transform to check if the item is inside the inventory
+    //public RectTransform leftLegTransform; //the transform to check if the item is inside the inventory
 
     public Transform startingTransformParent;
 
     [Space]
     [TagSelector]
-    public string InventoryTag = "";
+    public string rightArmTag = "";
+    [TagSelector]
+    public string leftArmTag = "";
+    [TagSelector]
+    public string rightLegTag = "";
+    [TagSelector]
+    public string leftLegTag = "";
     [TagSelector]
     public string BackpackTag = "";
 
@@ -51,10 +64,49 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             startingTransformParent = backpackContentTransform;
         }
         //sono sull inventario
-        else if (UIRaycast.Instance.currentTag == InventoryTag)
+        else if (UIRaycast.Instance.currentTag == rightArmTag)
         {
-            transform.SetParent(inventoryContentTransform);
-            startingTransformParent = inventoryContentTransform;
+            if(rightArmContentTransform.transform.childCount > 0)
+            {
+                Destroy(rightArmContentTransform.transform.GetChild(0).gameObject);
+            }
+
+            transform.SetParent(rightArmContentTransform);
+            startingTransformParent = rightArmContentTransform;
+            this.enabled = false;
+        }
+        else if (UIRaycast.Instance.currentTag == leftArmTag)
+        {
+            if (leftArmContentTransform.transform.childCount > 0)
+            {
+                Destroy(leftArmContentTransform.transform.GetChild(0).gameObject);
+            }
+
+            transform.SetParent(leftArmContentTransform);
+            startingTransformParent = leftArmContentTransform;
+            this.enabled = false;
+        }
+        else if (UIRaycast.Instance.currentTag == rightLegTag)
+        {
+            if (rightLegContentTransform.transform.childCount > 0)
+            {
+                Destroy(rightLegContentTransform.transform.GetChild(0).gameObject);
+            }
+
+            transform.SetParent(rightLegContentTransform);
+            startingTransformParent = rightLegContentTransform;
+            this.enabled = false;
+        }
+        else if (UIRaycast.Instance.currentTag == leftLegTag)
+        {
+            if (leftLegContentTransform.transform.childCount > 0)
+            {
+                Destroy(leftLegContentTransform.transform.GetChild(0).gameObject);
+            }
+
+            transform.SetParent(leftLegContentTransform);
+            startingTransformParent = leftLegContentTransform;
+            this.enabled = false;
         }
         else
         {
