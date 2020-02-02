@@ -33,8 +33,6 @@ public class Pirate : MonoBehaviour
         for (int i = 0; i < 5;i++)
             limbs.Add(new Limb());
 
-        if (limbs[LimbsIndexes.HEAD] == null)
-            Debug.Log("ouch");
         limbs[LimbsIndexes.HEAD].Initialize(defaultHead);
         limbs[LimbsIndexes.LEFTARM].Initialize(defaultLeftArm);
         limbs[LimbsIndexes.RIGHTARM].Initialize(defaultRightArm);

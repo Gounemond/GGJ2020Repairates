@@ -12,7 +12,8 @@ public class Enemy : MonoBehaviour
     public float hp;
     public float attack;
     public float attackPerSecond;
-    public List<GameObject> drops;
+
+    public float multiplier;
 
     private float ticks;
 
@@ -20,8 +21,11 @@ public class Enemy : MonoBehaviour
     {
         hp = hpBase * stage;
         attack = attackBase * stage;
+
+        // TODO balance
+        multiplier = stage;
+
         attackPerSecond = attackPerSecondBase;
-        drops = dropsBase;
 
         Debug.Log("Generated an enemy: \nhp: "+hp+"\nattack: "+attack);
     }
@@ -50,11 +54,30 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        Debug.Log("enemy taking damage: " + hp +" "+amount);
-        hp -= amount;
+        if (!IsDead())
+        {
+            Debug.Log("enemy taking damage: " + hp + " " + amount);
+            hp -= amount;
 
-        if (hp <= 0)
-            Debug.Log("An enemy died!");
+            if (hp <= 0)
+            {
+                int dropNumber = Random.Range(1, 3);
+
+                Debug.Log("droppati " + dropNumber + " oggetti");
+                for (int i = 0; i < dropNumber; i++)
+                {
+                    GameObject drop = Instantiate(dropsBase[Random.Range(0, dropsBase.Count - 1)], BackpackManager.Instance.transform);
+                    Drop d;
+
+                    d = drop.GetComponent<Drop>();
+
+                    d.multiplier = multiplier;
+                }
+
+
+                Debug.Log("An enemy died!");
+            }
+        }
     }
 
     public bool IsDead()

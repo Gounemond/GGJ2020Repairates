@@ -18,13 +18,6 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     public RectTransform rightLegContentTransform; // the parent to assign if the item has to snap to the right arm
     public RectTransform leftLegContentTransform; // the parent to assign if the item has to snap to the right arm
 
-
-    //public RectTransform backpackTransform; //the transform to check if the item is inside the backpack
-    //public RectTransform rightArmTransform; //the transform to check if the item is inside the inventory
-    //public RectTransform leftArmTransform; //the transform to check if the item is inside the inventory
-    //public RectTransform rightLegTransform; //the transform to check if the item is inside the inventory
-    //public RectTransform leftLegTransform; //the transform to check if the item is inside the inventory
-
     public Transform startingTransformParent;
 
     [Space]
