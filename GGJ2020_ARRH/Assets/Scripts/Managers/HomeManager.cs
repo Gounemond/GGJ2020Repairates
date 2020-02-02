@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HomeManager : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class HomeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(panelFader.FadeOut());
         panelFader.OnFadeInComplete += LoadNextScene;
-        panelFader.OnFadeInComplete += Esplodi;
     }
 
     // Update is called once per frame
@@ -19,13 +20,13 @@ public class HomeManager : MonoBehaviour
         
     }
 
-    public void LoadNextScene()
+    public void FadeToNextScene()
     {
-        // Sarcazzi
+        StartCoroutine(panelFader.FadeIn());
     }
 
-    public void Esplodi()
+    public void LoadNextScene()
     {
-
+        SceneManager.LoadScene(1);
     }
 }

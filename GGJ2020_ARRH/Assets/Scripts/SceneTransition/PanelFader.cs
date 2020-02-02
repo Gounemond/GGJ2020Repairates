@@ -21,10 +21,8 @@ public class PanelFader : MonoBehaviour
 
     public bool Visible { get; private set; }               // Whether the UI elements are currently visible.
 
-    public IEnumerator Start()
+    public void Start()
     {
-        yield return new WaitForSeconds(2);
-        StartCoroutine(FadeOut());
 
     }
 
