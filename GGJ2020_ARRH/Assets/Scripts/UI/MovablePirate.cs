@@ -6,6 +6,7 @@ public class MovablePirate : MonoBehaviour
 {
     public LayerMask draggableLayer;
     public Transform draggingLayer;
+    private OpenCloseInventory inventoryOpener;
 
     [HideInInspector]
     public Transform startingPos;
@@ -28,6 +29,11 @@ public class MovablePirate : MonoBehaviour
 
     [SerializeField]
     private LastRow LastRow;
+
+    private void Start()
+    {
+        inventoryOpener = FindObjectOfType<OpenCloseInventory>();
+    }
 
     void OnMouseDown()
     {
@@ -114,6 +120,9 @@ public class MovablePirate : MonoBehaviour
             UIPirate.Instance.pirate = GetComponent<Pirate>();
 
             UIPirate.Instance.image.texture = LastRow.renderTexture;
+
+            // Apri menu
+            inventoryOpener.OpenInventory();
 
             UIPirate.Instance.PopulateInventory();
         }
