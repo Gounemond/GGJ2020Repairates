@@ -283,6 +283,7 @@ MonoBehaviour:
   dropsBase:
   - {fileID: 6758237189065870323, guid: c4bd3a0dfdd407542994a0267cf3484a, type: 3}
   - {fileID: 6758237189065870323, guid: e61813e7118361c41981ab860a694ea9, type: 3}
+  - {fileID: 6758237189065870323, guid: e61813e7118361c41981ab860a694ea9, type: 3}
   hp: 500
   attack: 2
   attackPerSecond: 1

@@ -679,8 +679,8 @@ MonoBehaviour:
   attackBase: 3
   attackPerSecondBase: 1
   dropsBase:
-  - {fileID: 6758237189065870323, guid: bf5e1eb08c0992c4892198518786cf70, type: 3}
-  - {fileID: 6758237189065870323, guid: bf5e1eb08c0992c4892198518786cf70, type: 3}
+  - {fileID: 6758237189065870323, guid: b3f7aec2547624f01b972d4b55fbd59e, type: 3}
+  - {fileID: 6758237189065870323, guid: b3f7aec2547624f01b972d4b55fbd59e, type: 3}
   - {fileID: 6758237189065870323, guid: b81f7cff3a6593f45b5a0c4b2165219b, type: 3}
   - {fileID: 6758237189065870323, guid: b81f7cff3a6593f45b5a0c4b2165219b, type: 3}
   - {fileID: 6758237189065870323, guid: e61813e7118361c41981ab860a694ea9, type: 3}
@@ -688,7 +688,7 @@ MonoBehaviour:
   - {fileID: 6758237189065870323, guid: 5f64d64826d26c4409273a3e86a0d1ea, type: 3}
   - {fileID: 6758237189065870323, guid: 5f64d64826d26c4409273a3e86a0d1ea, type: 3}
   - {fileID: 6758237189065870323, guid: 5f64d64826d26c4409273a3e86a0d1ea, type: 3}
-  - {fileID: 6758237189065870323, guid: 4bcda428702798741852948885a2436e, type: 3}
+  - {fileID: 6758237189065870323, guid: b3f7aec2547624f01b972d4b55fbd59e, type: 3}
   hp: 500
   attack: 3
   attackPerSecond: 1

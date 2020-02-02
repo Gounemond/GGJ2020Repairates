@@ -43,6 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2486257826bcb43b8df3b93ce5faaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crewNumber: 10
-  defaultPirate: {fileID: 0}
+  shipBase: {fileID: 7645790332318643153, guid: cfa1c760fcb4f334abccfd3340cd92ec,
+    type: 3}
+  shipsBase:
+  - {fileID: 7796094561749584080, guid: d6905709d96994d41b93a3be2376202a, type: 3}
+  - {fileID: 7796094561749584080, guid: 87fd461697b3494438910b52c1d1734f, type: 3}
+  - {fileID: 7796094561749584080, guid: f71d8b7dbdc77f54e8e71cd89f52dcac, type: 3}
+  - {fileID: 7796094561749584080, guid: a9b2da8bcb2381b43bb3ccf8aaabaf03, type: 3}
+  - {fileID: 7796094561749584080, guid: 553bc4a5cc91c27469c2a68b0d0a8117, type: 3}
+  bossesBase:
+  - {fileID: 3112008754283110994, guid: 987034ec759a1d742addb53d82513e39, type: 3}
+  - {fileID: 3112008754283110994, guid: c9393017a0c0d2b4f85122583cf6d0af, type: 3}
+  - {fileID: 3112008754283110994, guid: 98c4e5c75e2bdcd4ca9a4a1f55a0051c, type: 3}
+  - {fileID: 7753360027468503945, guid: fa92ab4144ff98949a72c91422c41621, type: 3}
+  - {fileID: 3189736923055122142, guid: 103fba3b584d54941bc22859cd0a423b, type: 3}
+  enemy: {fileID: 0}
   stage: 0

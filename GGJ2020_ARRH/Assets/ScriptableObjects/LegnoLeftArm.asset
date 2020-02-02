@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LegnoLeftArm
   m_EditorClassIdentifier: 
   elementMat: {fileID: 2100000, guid: 809db7a072485f0428c6d9c18e608e91, type: 2}
-  maxHP: 5
+  maxHP: 7
   attack: 3
   attackPerSecond: 1
   melee: 0
