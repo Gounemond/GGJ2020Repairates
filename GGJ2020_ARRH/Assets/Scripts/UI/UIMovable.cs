@@ -72,6 +72,10 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
                 Destroy(rightArmContentTransform.transform.GetChild(0).gameObject);
             }
 
+            UIPirate.Instance.pirate.defaultRightArm = transform.GetComponent<Drop>().limb;
+
+            //cambiare il mat
+
             transform.SetParent(rightArmContentTransform);
             startingTransformParent = rightArmContentTransform;
             this.enabled = false;
@@ -82,6 +86,8 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             {
                 Destroy(leftArmContentTransform.transform.GetChild(0).gameObject);
             }
+
+            UIPirate.Instance.pirate.defaultLeftArm = transform.GetComponent<Drop>().limb;
 
             transform.SetParent(leftArmContentTransform);
             startingTransformParent = leftArmContentTransform;
@@ -94,6 +100,8 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
                 Destroy(rightLegContentTransform.transform.GetChild(0).gameObject);
             }
 
+            UIPirate.Instance.pirate.defaultRightLeg = transform.GetComponent<Drop>().limb;
+
             transform.SetParent(rightLegContentTransform);
             startingTransformParent = rightLegContentTransform;
             this.enabled = false;
@@ -104,6 +112,8 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             {
                 Destroy(leftLegContentTransform.transform.GetChild(0).gameObject);
             }
+
+            UIPirate.Instance.pirate.defaultLeftLeg = transform.GetComponent<Drop>().limb;
 
             transform.SetParent(leftLegContentTransform);
             startingTransformParent = leftLegContentTransform;
