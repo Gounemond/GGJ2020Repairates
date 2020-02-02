@@ -83,6 +83,7 @@ MonoBehaviour:
   otherPirate: {fileID: 0}
   isOccupied: 0
   hasHit: 0
+  LastRow: {fileID: 0}
 --- !u!114 &6076105201098466373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +102,7 @@ MonoBehaviour:
   defaultRightArm: {fileID: 11400000, guid: cfaa41de711cbf34583d6949e373288e, type: 2}
   defaultLeftLeg: {fileID: 11400000, guid: 6b172efb5c740cd4297883cab69f715c, type: 2}
   defaultRightLeg: {fileID: 11400000, guid: 2f08b8408573b994994a9b603a9f9b71, type: 2}
+  deadLimb: {fileID: 2100000, guid: be8c34aaa1fe39044ac0cbe24ad75a80, type: 2}
   attackPerSecond: 4
 --- !u!114 &5339947523137703809
 MonoBehaviour:

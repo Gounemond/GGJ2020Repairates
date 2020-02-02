@@ -20,6 +20,8 @@ public class Pirate : MonoBehaviour
     [SerializeField]
     public ScriptableLimb defaultRightLeg;
 
+    public Material deadLimb;
+
     private List<Limb> limbs;
 
     // if the pirate is not on the bridge he cannot attack
@@ -67,12 +69,38 @@ public class Pirate : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        // hit a random limb
-        int index = UnityEngine.Random.Range(0, 4);
+        // hit a random limb with some hps left
+        int index;
+        do
+        {
+            index = UnityEngine.Random.Range(1, 4);
+        } while (limbs[index].currentHP <= 0);
+
+        // actual do the damage to the limb
         limbs[index].currentHP -= amount;
 
-        // Play anims and sounds
-        pirateAnim.GetHit();
+        // remove the limb if it is finally destroyed
+        if (limbs[index].currentHP <= 0)
+        {
+            switch (index)
+            {
+                case LimbsIndexes.LEFTARM:
+                    transform.GetChild(0).GetChild(2).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
+                    break;
+                case LimbsIndexes.RIGHTARM:
+                    transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
+                    break;
+                case LimbsIndexes.LEFTLEG:
+                    transform.GetChild(0).GetChild(5).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
+                    break;
+                case LimbsIndexes.RIGHTLEG:
+                    transform.GetChild(0).GetChild(4).GetComponent<SkinnedMeshRenderer>().material = deadLimb;
+                    break;
+            }
+        }
+
+            // Play anims and sounds
+            pirateAnim.GetHit();
 
         // check if the pirate died
         if (GetCurrentHP() <= 0)
@@ -97,7 +125,8 @@ public class Pirate : MonoBehaviour
     {
         float total = 0;
         foreach (Limb limb in limbs)
-            total += limb.attack;
+            if (limb.currentHP > 0)
+                total += limb.attack;
         return total;
     }
     public float GetTotalHP()
@@ -123,6 +152,35 @@ public class Pirate : MonoBehaviour
     public List<Limb> GetLimbs()
     {
         return limbs;
+    }
+
+    public Limb GetLimb(int indexOfLimb)
+    {
+        return limbs[indexOfLimb];
+    }
+
+    public void SetLimb(int indexOfLimb, Limb newLimb)
+    {
+        limbs[indexOfLimb].attack = newLimb.attack;
+        limbs[indexOfLimb].currentHP = newLimb.maxHP;
+        limbs[indexOfLimb].maxHP = newLimb.maxHP;
+        limbs[indexOfLimb].elementMat = newLimb.elementMat;
+
+        switch (indexOfLimb)
+        {
+            case LimbsIndexes.LEFTARM:
+                transform.GetChild(0).GetChild(2).GetComponent<SkinnedMeshRenderer>().material = newLimb.elementMat;
+                break;
+            case LimbsIndexes.RIGHTARM:
+                transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>().material = newLimb.elementMat;
+                break;
+            case LimbsIndexes.LEFTLEG:
+                transform.GetChild(0).GetChild(5).GetComponent<SkinnedMeshRenderer>().material = newLimb.elementMat;
+                break;
+            case LimbsIndexes.RIGHTLEG:
+                transform.GetChild(0).GetChild(4).GetComponent<SkinnedMeshRenderer>().material = newLimb.elementMat;
+                break;
+        }
     }
 
     private IEnumerator DieGracefully()

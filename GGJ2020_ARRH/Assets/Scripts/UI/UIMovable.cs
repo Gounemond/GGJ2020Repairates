@@ -73,7 +73,7 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             }
 
             UIPirate.Instance.pirate.defaultRightArm = transform.GetComponent<Drop>().limb;
-
+            UIPirate.Instance.pirate.defaultRightArm.elementMat = transform.GetComponent<Drop>().limb.elementMat;
             //cambiare il mat
 
             transform.SetParent(rightArmContentTransform);
@@ -88,6 +88,8 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             }
 
             UIPirate.Instance.pirate.defaultLeftArm = transform.GetComponent<Drop>().limb;
+            UIPirate.Instance.pirate.defaultLeftArm.elementMat = transform.GetComponent<Drop>().limb.elementMat;
+
 
             transform.SetParent(leftArmContentTransform);
             startingTransformParent = leftArmContentTransform;
@@ -101,6 +103,7 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             }
 
             UIPirate.Instance.pirate.defaultRightLeg = transform.GetComponent<Drop>().limb;
+            UIPirate.Instance.pirate.defaultRightLeg.elementMat = transform.GetComponent<Drop>().limb.elementMat;
 
             transform.SetParent(rightLegContentTransform);
             startingTransformParent = rightLegContentTransform;
@@ -114,6 +117,9 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             }
 
             UIPirate.Instance.pirate.defaultLeftLeg = transform.GetComponent<Drop>().limb;
+            //UIPirate.Instance.pirate.defaultLeftLeg.elementMat = transform.GetComponent<Drop>().limb.elementMat;
+            UIPirate.Instance.pirate.GetLimb(LimbsIndexes.LEFTLEG).elementMat = transform.GetComponent<Drop>().limb.elementMat;
+            Debug.Log("Boh in teoria ho cambiato la gamba sinistra");
 
             transform.SetParent(leftLegContentTransform);
             startingTransformParent = leftLegContentTransform;
