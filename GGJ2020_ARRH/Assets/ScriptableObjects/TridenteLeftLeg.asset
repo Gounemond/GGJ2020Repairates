@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d51c17ee9d8867640a4c1ce0b305a72e, type: 3}
-  m_Name: PistolaRightArm
+  m_Name: TridenteLeftLeg
   m_EditorClassIdentifier: 
-  elementMat: {fileID: 2100000, guid: 7202be92d1b13f142990ca16d6a11575, type: 2}
+  elementMat: {fileID: 2100000, guid: e2501ed039cf5224099d7ac65fd94a80, type: 2}
   maxHP: 1
   attack: 1
   attackPerSecond: 1
