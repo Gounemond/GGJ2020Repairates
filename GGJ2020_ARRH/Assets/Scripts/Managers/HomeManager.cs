@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class HomeManager : MonoBehaviour
 {
     public PanelFader panelFader;
+    public AudioMixerSnapshot fadedSnapShot;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class HomeManager : MonoBehaviour
 
     public void FadeToNextScene()
     {
+        fadedSnapShot.TransitionTo(0.5f);
         StartCoroutine(panelFader.FadeIn());
     }
 
