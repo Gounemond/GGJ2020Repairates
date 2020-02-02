@@ -22,8 +22,7 @@ public class UIPirate : MonoBehaviour
     void Start()
     {
         Instance = this;
-
-        //image = GetComponent<RawImage>();
+        
     }
 
 
