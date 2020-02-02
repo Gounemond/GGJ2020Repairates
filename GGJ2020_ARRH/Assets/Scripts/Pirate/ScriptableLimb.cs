@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Limb", menuName = "ScriptableObjects/TheRepairates/Limb", order = 1)]
 public class ScriptableLimb : ScriptableObject
 {
-    public Sprite sprite;
+    public Material elementMat;
     public float maxHP;
     public float attack;
     public float attackPerSecond;

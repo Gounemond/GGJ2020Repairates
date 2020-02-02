@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d51c17ee9d8867640a4c1ce0b305a72e, type: 3}
-  m_Name: DefaultLeftLeg
+  m_Name: LegnoLeftLeg 1
   m_EditorClassIdentifier: 
-  elementMat: {fileID: 2100000, guid: 9a8b509d4bae7c6449736c8caf0ea967, type: 2}
+  elementMat: {fileID: 2100000, guid: 809db7a072485f0428c6d9c18e608e91, type: 2}
   maxHP: 1
   attack: 1
   attackPerSecond: 1
