@@ -9,6 +9,7 @@ TagManager:
   - RightLeg
   - LeftLeg
   - RightArm
+  - OuterCanvas
   layers:
   - Default
   - TransparentFX

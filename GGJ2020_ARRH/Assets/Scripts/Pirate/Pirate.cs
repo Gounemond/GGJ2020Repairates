@@ -10,15 +10,15 @@ public class Pirate : MonoBehaviour
     [SerializeField] private PirateAnim pirateAnim;
 
     [SerializeField]
-    private ScriptableLimb defaultHead;
+    public ScriptableLimb defaultHead;
     [SerializeField]
-    private ScriptableLimb defaultLeftArm;
+    public ScriptableLimb defaultLeftArm;
     [SerializeField]
-    private ScriptableLimb defaultRightArm;
+    public ScriptableLimb defaultRightArm;
     [SerializeField]
-    private ScriptableLimb defaultLeftLeg;
+    public ScriptableLimb defaultLeftLeg;
     [SerializeField]
-    private ScriptableLimb defaultRightLeg;
+    public ScriptableLimb defaultRightLeg;
 
     private List<Limb> limbs;
 

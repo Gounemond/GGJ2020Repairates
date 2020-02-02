@@ -35,6 +35,14 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     protected void Start()
     {
         startingTransformParent = transform.parent;
+
+        backpackContentTransform = GameObject.FindGameObjectWithTag(BackpackTag).GetComponent<RectTransform>();
+        rightArmContentTransform = GameObject.FindGameObjectWithTag(rightArmTag).GetComponent<RectTransform>();
+        leftArmContentTransform = GameObject.FindGameObjectWithTag(leftArmTag).GetComponent<RectTransform>();
+        rightLegContentTransform = GameObject.FindGameObjectWithTag(rightLegTag).GetComponent<RectTransform>();
+        leftLegContentTransform = GameObject.FindGameObjectWithTag(leftLegTag).GetComponent<RectTransform>();
+
+        outernCanvasTransform = GameObject.FindGameObjectWithTag("OuterCanvas").GetComponent<Transform>();
     }
 
     public virtual void OnBeginDrag(PointerEventData eventData)
