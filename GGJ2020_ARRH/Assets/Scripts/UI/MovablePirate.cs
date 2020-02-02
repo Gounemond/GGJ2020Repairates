@@ -7,18 +7,18 @@ public class MovablePirate : MonoBehaviour
     public LayerMask draggableLayer;
     public Transform draggingLayer;
 
-    //[HideInInspector]
+    [HideInInspector]
     public Transform startingPos;
-    //[HideInInspector]
+    [HideInInspector]
     public Transform goingPos;
-    //[HideInInspector]
+    [HideInInspector]
     public Transform oldPos;
 
-    //[HideInInspector]
+    [HideInInspector]
     public Transform otherPirate;
-    //[HideInInspector]
+    [HideInInspector]
     public bool isOccupied = false;
-    //[HideInInspector]
+    [HideInInspector]
     public bool hasHit = false;
 
     private Vector3 mOffset;

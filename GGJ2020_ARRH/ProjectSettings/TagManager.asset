@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Backpack
-  - Inventory
+  - LeftArm
+  - RightLeg
+  - LeftLeg
+  - RightArm
   layers:
   - Default
   - TransparentFX
