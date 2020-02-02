@@ -615,8 +615,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6756012991150287258}
   - component: {fileID: 3695253818078610656}
+  - component: {fileID: -3619547465191477355}
   m_Layer: 0
-  m_Name: Serpento_Boss
+  m_Name: Boss_Serpento
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -653,7 +654,7 @@ Animator:
   m_GameObject: {fileID: 7753360027468503945}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d99fee16d7c584f4c98934ae62398f84, type: 3}
-  m_Controller: {fileID: 9100000, guid: 20459e0d0ff5e0b49abef3fa29b96a70, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5842241eb5fef0641b35359461408597, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -662,6 +663,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-3619547465191477355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7753360027468503945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10912a291f066644281d107b05e9916c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpBase: 500
+  attackBase: 3
+  attackPerSecondBase: 1
+  dropsBase: []
+  hp: 500
+  attack: 3
+  attackPerSecond: 1
+  multiplier: 0
 --- !u!1 &8214442423026069182
 GameObject:
   m_ObjectHideFlags: 0
