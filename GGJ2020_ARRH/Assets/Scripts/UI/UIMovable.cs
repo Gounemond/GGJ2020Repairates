@@ -76,6 +76,11 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
 
             Limb tempLimb = new Limb();
             tempLimb.Initialize(transform.GetComponent<Drop>().limb);
+
+            tempLimb.attack *= transform.GetComponent<Drop>().multiplier;
+            tempLimb.maxHP *= transform.GetComponent<Drop>().multiplier;
+            tempLimb.currentHP = tempLimb.maxHP;
+            
             UIPirate.Instance.pirate.SetLimb(LimbsIndexes.RIGHTARM, tempLimb);
             //cambiare il mat
 
@@ -94,6 +99,12 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
 
             Limb tempLimb = new Limb();
             tempLimb.Initialize(transform.GetComponent<Drop>().limb);
+
+            tempLimb.attack *= transform.GetComponent<Drop>().multiplier;
+            tempLimb.maxHP *= transform.GetComponent<Drop>().multiplier;
+            tempLimb.currentHP = tempLimb.maxHP;
+
+            
             UIPirate.Instance.pirate.SetLimb(LimbsIndexes.LEFTARM, tempLimb);
 
 
@@ -112,6 +123,12 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
 
             Limb tempLimb = new Limb();
             tempLimb.Initialize(transform.GetComponent<Drop>().limb);
+
+            tempLimb.attack *= transform.GetComponent<Drop>().multiplier;
+            tempLimb.maxHP *= transform.GetComponent<Drop>().multiplier;
+            tempLimb.currentHP = tempLimb.maxHP;
+
+
             UIPirate.Instance.pirate.SetLimb(LimbsIndexes.RIGHTLEG, tempLimb);
 
             transform.SetParent(rightLegContentTransform);
@@ -129,6 +146,12 @@ public class UIMovable : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             //UIPirate.Instance.pirate.defaultLeftLeg.elementMat = transform.GetComponent<Drop>().limb.elementMat;
             Limb tempLimb = new Limb();
             tempLimb.Initialize(transform.GetComponent<Drop>().limb);
+
+            tempLimb.attack *= transform.GetComponent<Drop>().multiplier;
+            tempLimb.maxHP *= transform.GetComponent<Drop>().multiplier;
+            tempLimb.currentHP = tempLimb.maxHP;
+
+
             UIPirate.Instance.pirate.SetLimb(LimbsIndexes.LEFTLEG, tempLimb);
 
             transform.SetParent(leftLegContentTransform);
